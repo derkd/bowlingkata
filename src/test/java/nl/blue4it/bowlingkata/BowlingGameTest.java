@@ -8,11 +8,20 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class BowlingGameTest {
-    
+
     @Test
     public void shouldCreateInstance() throws Exception {
         BowlingGame bowlingGame = new BowlingGame();
 
         assertThat(bowlingGame, is(instanceOf(BowlingGame.class)));
+    }
+
+    @Test
+    public void shouldGiveAScoreOf0WhenNoPinIsDownForARoll() throws Exception {
+        BowlingGame bowlingGame = new BowlingGame();
+
+        bowlingGame.roll(0);
+
+        assertThat(bowlingGame.getScore(), is(0));
     }
 }
