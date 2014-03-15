@@ -11,15 +11,19 @@ public class BowlingGame {
     }
 
     public int getScore() {
-        for(int i = 0; i < rolls.length; i++) {
-            score += rolls[i];
-            if(rolls[i] == 10){
-                // strike
-                score += rolls[i + 1];
-                score += rolls[i + 2];
+        for(int r = 0; r < rolls.length; r++) {
+            score += rolls[r];
+            if(isStrike(r)){
+                score += rolls[r + 1];
+                score += rolls[r + 2];
             }
+
         }
         return score;
+    }
+
+    private boolean isStrike(int i) {
+        return rolls[i] == 10;
     }
 
 }
