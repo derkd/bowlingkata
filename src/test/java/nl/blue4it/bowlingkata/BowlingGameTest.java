@@ -24,4 +24,13 @@ public class BowlingGameTest {
 
         assertThat(bowlingGame.getScore(), is(0));
     }
+
+    @Test
+    public void shouldGiveAScoreOf5When5PinsAreDown() throws Exception {
+        BowlingGame bowlingGame = new BowlingGame();
+
+        bowlingGame.roll(5);
+
+        assertThat(bowlingGame.getScore(), is(5));
+    }
 }
