@@ -29,4 +29,14 @@ public class BowlingGameTest {
 
         assertThat(bowlingGame.getScore(), is(5));
     }
+
+    @Test
+    public void shouldGiveAScoreOf14WhenASpareIsThrown() throws Exception {
+        bowlingGame.roll(1);
+        bowlingGame.roll(9); // spare
+
+        bowlingGame.roll(2); // first roll of 2nd frame
+
+        assertThat(bowlingGame.getScore(), is(14));
+    }
 }
