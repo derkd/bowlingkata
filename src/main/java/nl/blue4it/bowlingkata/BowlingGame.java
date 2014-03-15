@@ -16,11 +16,16 @@ public class BowlingGame {
             if(isStrike(r)){
                 score += rolls[r + 1];
                 score += rolls[r + 2];
-            } else if(r % 2 == 0 && rolls[r] + rolls[r + 1] == 10) {
+            } else if(isSpare(r)) {
                 score += rolls[r + 2];
             }
         }
         return score;
+    }
+
+    private boolean isSpare(int r) {
+        // here we check if 2 rolls in 1 frame equals 10
+        return r % 2 == 0 && rolls[r] + rolls[r + 1] == 10;
     }
 
     private boolean isStrike(int i) {
