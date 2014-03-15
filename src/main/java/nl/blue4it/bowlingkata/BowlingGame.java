@@ -11,13 +11,14 @@ public class BowlingGame {
     }
 
     public int getScore() {
-        for(int r = 0; r < rolls.length; r++) {
+        for(int r = 0; r < counter; r++) {
             score += rolls[r];
             if(isStrike(r)){
                 score += rolls[r + 1];
                 score += rolls[r + 2];
+            } else if(r % 2 == 0 && rolls[r] + rolls[r + 1] == 10) {
+                score += rolls[r + 2];
             }
-
         }
         return score;
     }

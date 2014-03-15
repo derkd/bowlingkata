@@ -2,7 +2,6 @@ package nl.blue4it.bowlingkata;
 
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -42,7 +41,6 @@ public class BowlingGameTest {
     }
 
     @Test
-    @Ignore
     public void shouldGiveAScoreOf14WhenASpareIsThrown() throws Exception {
         bowlingGame.roll(1);
         bowlingGame.roll(9); // spare
@@ -53,7 +51,6 @@ public class BowlingGameTest {
     }
 
     @Test
-    @Ignore
     public void shouldGiveAScoreOf23When9isThrownInThe1stFrameASpareIsThrownInThe2ndFrameAnd2IsThrownInTheFirstRollOf3rdFrame()
             throws Exception {
         bowlingGame.roll(1);
