@@ -18,34 +18,28 @@ public class BowlingGameTest {
 
     @Test
     public void shouldGiveAScoreOf0WhenNoPinIsDownForARoll() throws Exception {
-        bowlingGame.roll(0);
+        roll(0);
 
         assertThat(bowlingGame.getScore(), is(0));
     }
 
     @Test
     public void shouldGiveAScoreOf5When5PinsAreDown() throws Exception {
-        bowlingGame.roll(5);
+        roll(5);
 
         assertThat(bowlingGame.getScore(), is(5));
     }
 
     @Test
     public void shouldGiveAScoreOf26WhenAStrikeIsThrownInTheFirstRollAnd4IsThrownInThe2ndAnd3rdRoll() throws Exception {
-        bowlingGame.roll(10);
-
-        bowlingGame.roll(4);
-        bowlingGame.roll(4);
+        roll(10, 4, 4);
 
         assertThat(bowlingGame.getScore(), is(26));
     }
 
     @Test
     public void shouldGiveAScoreOf14WhenASpareIsThrown() throws Exception {
-        bowlingGame.roll(1);
-        bowlingGame.roll(9); // spare
-
-        bowlingGame.roll(2); // first roll of 2nd frame
+        roll(1, 9, 2);
 
         assertThat(bowlingGame.getScore(), is(14));
     }
@@ -53,14 +47,15 @@ public class BowlingGameTest {
     @Test
     public void shouldGiveAScoreOf23When9isThrownInThe1stFrameASpareIsThrownInThe2ndFrameAnd2IsThrownInTheFirstRollOf3rdFrame()
             throws Exception {
-        bowlingGame.roll(1);
-        bowlingGame.roll(8);
-
-        bowlingGame.roll(2);
-        bowlingGame.roll(8); // spare
-
-        bowlingGame.roll(2); // first roll of 3nd frame
+        roll(1, 8, 2, 8, 2);
 
         assertThat(bowlingGame.getScore(), is(23));
+    }
+
+    public void roll(int... rolls) {
+        for(int roll : rolls) {
+            bowlingGame.roll(roll);
+        }
+
     }
 }
