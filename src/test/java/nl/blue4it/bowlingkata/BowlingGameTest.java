@@ -2,6 +2,7 @@ package nl.blue4it.bowlingkata;
 
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,8 +18,8 @@ public class BowlingGameTest {
     }
 
     @Test
-    public void shouldGiveAScoreOf0WhenNoPinIsDownForARoll() throws Exception {
-        roll(0);
+    public void shouldGiveAScoreOf0ForGutterGame() throws Exception {
+        roll(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
         assertThat(bowlingGame.getScore(), is(0));
     }
@@ -50,6 +51,20 @@ public class BowlingGameTest {
         roll(1, 8, 2, 8, 2);
 
         assertThat(bowlingGame.getScore(), is(23));
+    }
+
+    @Test
+    public void shouldGiveAScoreOf0WhenNoPinIsDownForARoll() throws Exception {
+        roll(0);
+
+        assertThat(bowlingGame.getScore(), is(0));
+    }
+
+    @Test
+    public void shouldGiveAScoreOf300ForThePerfectGame() throws Exception {
+        roll(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+        assertThat(bowlingGame.getScore(), is(300));
     }
 
     public void roll(int... rolls) {
